@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.codeerow.validation-ktx'
+group = 'com.github.codeerow.validation'
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'

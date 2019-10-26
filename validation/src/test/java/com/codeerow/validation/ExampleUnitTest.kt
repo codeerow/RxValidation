@@ -12,14 +12,15 @@ class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
-        val validator = Validator.Builder()
-            .addValidation(Validation.Builder { true }
+        val allIsValid = Validator.allIsValid(
+            Validation.Builder(1)
                 .addRule { _ -> true }
-                .addHandler { }
+                .build(),
+            Validation.Builder(true)
+                .addRule { _ -> true }
                 .build()
-            )
-            .build()
+        )
 
-        validator.allIsValid()
+        print(allIsValid)
     }
 }

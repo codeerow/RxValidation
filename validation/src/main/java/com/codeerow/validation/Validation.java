@@ -6,47 +6,35 @@ import java.util.List;
 
 
 public class Validation<S> {
-    private Provider<S> subjectProvider;
+    private S subject;
     private List<Rule<S>> rules;
-    private List<Handler<Boolean>> handlers;
 
 
-    public Validation(Provider<S> subjectProvider, Rule<S>... rules) {
-        this.subjectProvider = subjectProvider;
+    public Validation(S subject, Rule<S>... rules) {
+        this.subject = subject;
         this.rules = Arrays.asList(rules);
-        this.handlers = new ArrayList<>();
     }
 
-    public Validation(Provider<S> subjectProvider, List<Rule<S>> rules, List<Handler<Boolean>> handlers) {
-        this.subjectProvider = subjectProvider;
+    public Validation(S subject, List<Rule<S>> rules) {
+        this.subject = subject;
         this.rules = rules;
-        this.handlers = handlers;
     }
 
 
-    boolean validate() {
-        boolean result = true;
-        S subject = subjectProvider.provide();
-
+    boolean isValid() {
         for (Rule<S> rule : rules) {
-            boolean isValid = rule.execute(subject);
-            if (!isValid) result = false;
+            if (!rule.execute(subject)) return false;
         }
-
-        for (Handler<Boolean> handler : handlers) {
-            handler.handle(result);
-        }
-        return result;
+        return true;
     }
 
 
     public static class Builder<S> {
-        private Provider<S> subjectProvider;
+        private S subject;
         private List<Rule<S>> rules = new ArrayList<>();
-        private List<Handler<Boolean>> handlers = new ArrayList<>();
 
-        public Builder(Provider<S> subjectProvider) {
-            this.subjectProvider = subjectProvider;
+        public Builder(S subject) {
+            this.subject = subject;
         }
 
 
@@ -55,14 +43,8 @@ public class Validation<S> {
             return this;
         }
 
-        public Builder addHandler(Handler<Boolean> handler) {
-            this.handlers.add(handler);
-            return this;
-        }
-
-
         public Validation<S> build() {
-            return new Validation<>(subjectProvider, rules, handlers);
+            return new Validation<>(subject, rules);
         }
     }
 }
