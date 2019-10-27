@@ -1,5 +1,6 @@
 package com.codeerow.validation
 
+import com.codeerow.validation
 import org.junit.Test
 
 /**
@@ -12,14 +13,11 @@ class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
-        val validator = Validator.Builder()
-            .addValidation(Validation.Builder { true }
-                .addRule { _ -> true }
-                .addHandler { }
-                .build()
-            )
-            .build()
+        val allIsValid = Validator.allIsValid(
+            validation(true) { true },
+            validation(true) { true }
+        )
 
-        validator.allIsValid()
+        print(allIsValid)
     }
 }

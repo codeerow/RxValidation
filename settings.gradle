@@ -1,2 +1,2 @@
-include ':validation', ':validation-ktx'
-rootProject.name='Validation'
+include ':core', ':core-ktx'
+rootProject.name = 'validation'

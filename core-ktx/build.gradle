@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.github.codeerow.validation-ktx'
+group = 'com.codeerow.validation.core-ktx'
 
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
@@ -10,6 +10,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$project.versions.kotlin"
     testImplementation "junit:junit:4.12"
+
+    api project(':core')
 }
 
 sourceCompatibility = "7"
@@ -27,3 +29,4 @@ buildscript {
 repositories {
     mavenCentral()
 }
+
