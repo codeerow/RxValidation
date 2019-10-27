@@ -8,8 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/validation" />
-            <option value="$PROJECT_DIR$/validation-ktx" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core-ktx" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

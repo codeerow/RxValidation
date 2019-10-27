@@ -1,6 +1,6 @@
 package com.codeerow.validation
 
-import com.codeerow.`validation-ktx`.validation
+import com.codeerow.validation
 import org.junit.Test
 
 /**
@@ -14,8 +14,8 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         val allIsValid = Validator.allIsValid(
-            validation(true, { true }),
-            validation(true, { true })
+            validation(true) { true },
+            validation(true) { true }
         )
 
         print(allIsValid)

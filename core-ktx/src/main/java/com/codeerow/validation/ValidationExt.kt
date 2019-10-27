@@ -1,6 +1,4 @@
-package com.codeerow.`validation-ktx`
-
-import com.codeerow.validation.Validation
+package com.codeerow.validation
 
 
 fun <S> validation(subject: S, vararg rules: (S) -> Boolean): Validation<S> {
