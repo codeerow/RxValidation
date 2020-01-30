@@ -21,7 +21,7 @@ public class Validation<S> {
     }
 
 
-    boolean isValid() {
+    public boolean isValid() {
         for (Rule<S> rule : rules) {
             if (!rule.execute(subject)) return false;
         }
